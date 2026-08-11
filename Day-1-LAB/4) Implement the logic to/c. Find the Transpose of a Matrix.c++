@@ -1,12 +1,35 @@
 // c. Find the Transpose of a Matrix
 
-r = int(input("Enter rows: "))
-c = int(input("Enter columns: "))
+#include <iostream>
+using namespace std;
 
-matrix = [list(map(int, input().split())) for _ in range(r)]
+int main() {
 
-transpose = [[matrix[j][i] for j in range(r)] for i in range(c)]
+    int r, c;
+    int matrix[100][100];
 
-print("Transpose:")
-for row in transpose:
-    print(*row)
+    cout << "Enter rows: ";
+    cin >> r;
+
+    cout << "Enter columns: ";
+    cin >> c;
+
+    cout << "Enter matrix:\n";
+
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    cout << "Transpose:\n";
+
+    for (int i = 0; i < c; i++) {
+        for (int j = 0; j < r; j++) {
+            cout << matrix[j][i] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}

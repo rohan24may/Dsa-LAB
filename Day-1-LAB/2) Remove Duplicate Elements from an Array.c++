@@ -1,13 +1,44 @@
-// Design the logic to remove duplicate elements from an array so that after deletion the array contains only unique elements.
+#include <iostream>
+using namespace std;
 
-arr = list(map(int, input("Enter elements: ").split()))
+int main() {
 
-unique = []
+    int arr[100];
+    int n;
 
-for x in arr:
-    if x not in unique:
-        unique.append(x)
+    cout << "Enter size: ";
+    cin >> n;
 
-arr = unique
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
 
-print("Array after removing duplicates:", arr)
+    int unique[100];
+    int uniqueSize = 0;
+
+    for (int i = 0; i < n; i++) {
+
+        bool duplicate = false;
+
+        for (int j = 0; j < uniqueSize; j++) {
+            if (arr[i] == unique[j]) {
+                duplicate = true;
+                break;
+            }
+        }
+
+        if (!duplicate) {
+            unique[uniqueSize] = arr[i];
+            uniqueSize++;
+        }
+    }
+
+    cout << "Array after removing duplicates: ";
+
+    for (int i = 0; i < uniqueSize; i++) {
+        cout << unique[i] << " ";
+    }
+
+    return 0;
+}

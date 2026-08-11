@@ -1,16 +1,49 @@
-// 5) Write a program to find sum of every row and every column in a two-dimensional
-// array
+// 5) Write a program to find sum of every row and every column
+// in a two-dimensional array.
 
-r = int(input("Enter rows: "))
-c = int(input("Enter columns: "))
+#include <iostream>
+using namespace std;
 
-matrix = [list(map(int, input().split())) for _ in range(r)]
+int main() {
 
-for i in range(r):
-    print("Sum of row", i + 1, "=", sum(matrix[i]))
+    int r, c;
+    int matrix[100][100];
 
-for j in range(c):
-    total = 0
-    for i in range(r):
-        total += matrix[i][j]
-    print("Sum of column", j + 1, "=", total)
+    cout << "Enter rows: ";
+    cin >> r;
+
+    cout << "Enter columns: ";
+    cin >> c;
+
+    cout << "Enter elements:\n";
+
+    for (int i = 0; i < r; i++) {
+        for (int j = 0; j < c; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    for (int i = 0; i < r; i++) {
+
+        int sum = 0;
+
+        for (int j = 0; j < c; j++) {
+            sum += matrix[i][j];
+        }
+
+        cout << "Sum of row " << i + 1 << " = " << sum << endl;
+    }
+
+    for (int j = 0; j < c; j++) {
+
+        int sum = 0;
+
+        for (int i = 0; i < r; i++) {
+            sum += matrix[i][j];
+        }
+
+        cout << "Sum of column " << j + 1 << " = " << sum << endl;
+    }
+
+    return 0;
+}
