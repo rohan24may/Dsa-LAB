@@ -1,23 +1,63 @@
 // b. Find the matrix multiplication
 
-r1 = int(input("Rows of first matrix: "))
-c1 = int(input("Columns of first matrix: "))
-A = [list(map(int, input().split())) for _ in range(r1)]
+#include <iostream>
+using namespace std;
 
-r2 = int(input("Rows of second matrix: "))
-c2 = int(input("Columns of second matrix: "))
-B = [list(map(int, input().split())) for _ in range(r2)]
+int main() {
 
-if c1 != r2:
-    print("Matrix multiplication not possible.")
-else:
-    C = [[0] * c2 for _ in range(r1)]
+    int r1, c1, r2, c2;
+    int A[100][100], B[100][100], C[100][100];
 
-    for i in range(r1):
-        for j in range(c2):
-            for k in range(c1):
-                C[i][j] += A[i][k] * B[k][j]
+    cout << "Rows of first matrix: ";
+    cin >> r1;
 
-    print("Result:")
-    for row in C:
-        print(*row)
+    cout << "Columns of first matrix: ";
+    cin >> c1;
+
+    cout << "Enter first matrix:\n";
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c1; j++) {
+            cin >> A[i][j];
+        }
+    }
+
+    cout << "Rows of second matrix: ";
+    cin >> r2;
+
+    cout << "Columns of second matrix: ";
+    cin >> c2;
+
+    if (c1 != r2) {
+        cout << "Matrix multiplication not possible.";
+        return 0;
+    }
+
+    cout << "Enter second matrix:\n";
+    for (int i = 0; i < r2; i++) {
+        for (int j = 0; j < c2; j++) {
+            cin >> B[i][j];
+        }
+    }
+
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c2; j++) {
+
+            C[i][j] = 0;
+
+            for (int k = 0; k < c1; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+
+    cout << "Result:\n";
+
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c2; j++) {
+            cout << C[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}

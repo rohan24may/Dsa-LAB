@@ -7,51 +7,137 @@
 // Linear Search
 // Exit
 
-arr = []
+#include <iostream>
+using namespace std;
 
-while True:
-    print("\n--- MENU ---")
-    print("1. CREATE")
-    print("2. DISPLAY")
-    print("3. INSERT")
-    print("4. DELETE")
-    print("5. LINEAR SEARCH")
-    print("6. EXIT")
+int main() {
 
-    choice = int(input("Enter choice: "))
+    int arr[100];
+    int size = 0;
 
-    if choice == 1:
-        n = int(input("Enter size: "))
-        arr = list(map(int, input("Enter elements: ").split()))[:n]
-        print("Array created.")
+    while (true) {
 
-    elif choice == 2:
-        print("Array:", arr)
+        cout << "\n--- MENU ---\n";
+        cout << "1. CREATE\n";
+        cout << "2. DISPLAY\n";
+        cout << "3. INSERT\n";
+        cout << "4. DELETE\n";
+        cout << "5. LINEAR SEARCH\n";
+        cout << "6. EXIT\n";
 
-    elif choice == 3:
-        pos = int(input("Enter position: "))
-        value = int(input("Enter value: "))
-        arr.insert(pos, value)
-        print("Array:", arr)
+        int choice;
+        cout << "Enter choice: ";
+        cin >> choice;
 
-    elif choice == 4:
-        pos = int(input("Enter position: "))
-        if 0 <= pos < len(arr):
-            arr.pop(pos)
-            print("Array:", arr)
-        else:
-            print("Invalid position.")
+        if (choice == 1) {
 
-    elif choice == 5:
-        value = int(input("Enter element to search: "))
-        if value in arr:
-            print("Element found at index", arr.index(value))
-        else:
-            print("Element not found.")
+            cout << "Enter size: ";
+            cin >> size;
 
-    elif choice == 6:
-        print("Program exited.")
-        break
+            cout << "Enter elements: ";
+            for (int i = 0; i < size; i++) {
+                cin >> arr[i];
+            }
 
-    else:
-        print("Invalid choice.")
+            cout << "Array created.";
+
+        }
+
+        else if (choice == 2) {
+
+            cout << "Array: ";
+            for (int i = 0; i < size; i++) {
+                cout << arr[i] << " ";
+            }
+
+        }
+
+        else if (choice == 3) {
+
+            int pos, value;
+
+            cout << "Enter position: ";
+            cin >> pos;
+
+            cout << "Enter value: ";
+            cin >> value;
+
+            for (int i = size; i > pos; i--) {
+                arr[i] = arr[i - 1];
+            }
+
+            arr[pos] = value;
+            size++;
+
+            cout << "Array: ";
+            for (int i = 0; i < size; i++) {
+                cout << arr[i] << " ";
+            }
+
+        }
+
+        else if (choice == 4) {
+
+            int pos;
+
+            cout << "Enter position: ";
+            cin >> pos;
+
+            if (pos >= 0 && pos < size) {
+
+                for (int i = pos; i < size - 1; i++) {
+                    arr[i] = arr[i + 1];
+                }
+
+                size--;
+
+                cout << "Array: ";
+                for (int i = 0; i < size; i++) {
+                    cout << arr[i] << " ";
+                }
+
+            }
+            else {
+                cout << "Invalid position.";
+            }
+
+        }
+
+        else if (choice == 5) {
+
+            int value;
+            bool found = false;
+
+            cout << "Enter element to search: ";
+            cin >> value;
+
+            for (int i = 0; i < size; i++) {
+
+                if (arr[i] == value) {
+                    cout << "Element found at index " << i;
+                    found = true;
+                    break;
+                }
+
+            }
+
+            if (!found) {
+                cout << "Element not found.";
+            }
+
+        }
+
+        else if (choice == 6) {
+
+            cout << "Program exited.";
+            break;
+
+        }
+
+        else {
+            cout << "Invalid choice.";
+        }
+    }
+
+    return 0;
+}
