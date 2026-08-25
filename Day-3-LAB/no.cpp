@@ -44,36 +44,45 @@ public:
     {
         return top == -1;
     }
-};
+};   
+
+
+bool isValid(string str)
+{
+    int count = 0;
+
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (str[i] == '(' || str[i] == '{' || str[i] == '[')
+        {
+            count++;
+        }
+        else if (str[i] == ')' || str[i] == '}' || str[i] == ']')
+        {
+            count--;
+        }
+    }
+
+    return count == 0;
+}
+
 
 int main()
 {
-    
     string str;
 
-    cout << "Enter a string: ";
+    cout << "Enter the brackets: ";
     cin >> str;
-
     
-    Stack stack(str.length());
 
-   
-    for (int i = 0; i < str.length(); i++)
+    if (isValid(str))
     {
-        stack.push(str[i]);
+        cout << "Valid Parentheses" << endl;
     }
-
-    string reversed;
-
-
-    while (stack.isEmpty() == false)
+    else
     {
-        char ch = stack.pop();
-
-        reversed = reversed + ch;
+        cout << "Invalid Parentheses" << endl;
     }
-
-    cout << "Reversed String: " << reversed << endl;
 
     return 0;
 }
